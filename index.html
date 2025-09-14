@@ -1,47 +1,142 @@
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Send to Telegram Bot</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #main {
+            background-color: rgb(30, 26, 26);
+            color: aliceblue;
+            padding: 30px;
+            /* width: 20%; */
+        }
+        img {width: 100px;}
+        #expretion {
+            background-color: aliceblue;
+            color: black;
+            padding: 20px;
+        }
+        #img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 6px;
+        }
+        #contact__info {
+            background-color: aliceblue;
+            color: black;
+            padding: 20px;
+            display: flex;
+            /* width: 80%; */
+        }
+        p {margin-left: 30px;}
+        .contact__text {
+            margin-left: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #im {
+            margin: 9px;
+        }
+
+        .foto {
+            display: flex;
+        }
+        .l {width: 60%;}
+        .r {
+            margin-top: 30px;
+        }
+        #project {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h2>***************</h2>
-  <input type="text" id="message" placeholder="Напиши сообщение">
-  <button id="send">Отправить</button>
 
-  <script>
-    const TOKEN = "7818595166:AAGMYNuLRQLizeaqeKesIC4QpOPC7vTLQr0"; // твой токен
-    const CHAT_ID = "1201316750"; // вставь сюда свой числовой chat_id
-
-    document.getElementById("send").addEventListener("click", () => {
-      const inputField = document.getElementById("message");
-      const text = inputField.value.trim();
-      if(!text) { 
-        alert("Введите сообщение!"); 
-        return; 
-      }
-
-      // очищаем поле сразу после нажатия кнопки
-      inputField.value = "";
-
-      // уведомление пользователю
-    //   alert("Сообщение будет отправлено через 10 секунд...");
-
-      // задержка 10 секунд
-      setTimeout(() => {
-        fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`)
-          .then(r => r.json())
-          .then(data => {
-            if(data.ok) {
-            //   alert("Сообщение отправлено ✅");
-            } else {
-              alert("Ошибка: " + (data.description || "неизвестно"));
-            }
-          })
-          .catch(err => alert("Ошибка запроса: " + err));
-      }, 5000); // 10000 миллисекунд = 10 секунд
-    });
-  </script>
+   <div class="header">
+    <div id="main">
+        <div class="main__foto">
+            <div class="foto">
+                <div class="l">
+                    <img src="vit.jpeg" alt="">
+                </div>
+                <div class="r">
+                        <span>VITALIY</span> <br>
+                        <span>GURNIK</span>
+                        <h3>web_developer</h3>
+                </div>
+            </div>
+            <h2 id="a">ABOUT ME</h2>
+            <p id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sed quisquam corrupti recusandae nam eaque <br>
+                aperiam voluptatibus! Mollitia, laborum at saepe porro, officia earum maiores aut quos ut nam nemo?</p>
+        </div>
+        <section id="expretion">
+            <h2>EXPIRIENTS</h2>
+            <ul>
+                <li>Company - 1</li>
+                <li>Company - 2</li>
+                <li>Company - 3</li>
+            </ul>
+        </section>
+        <section id="contacts">
+            <h2>Contacts</h2>
+            <div id="contact__info">
+                <div class="contact__icon">
+                  <div id="img"><img src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_phone_iphone_48px-512.png" alt="" id="img"></div> 
+                  <div id="img"><img src="https://cdn4.iconfinder.com/data/icons/epic-outlines/30/.svg-512.png" alt="" id="img"></div>  
+                  <div id="img"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-linkedin-outline-512.png" alt="" id="img"></div>
+                  <div id="img"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-location-512.png" alt="" id="img"></div>
+                </div>
+                <div class="contact__text">
+                    <div id="im">096-749-52-54</div>
+                    <div id="im">gurnik@ukr.net</div>
+                    <div id="im">linkedin/vit/com</div>
+                    <div id="im">Ukraine,Odessa</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section id="project">
+        <h2>MY_PROJECT</h2>
+        <div class="poj">SLIDER</div>
+        <div class="poj">TABS</div>
+        <div class="poj"></div>
+    </section>
+    <section id="project1">
+        <section id="expretion">
+            <h2>SKILLS</h2>
+            <p><input type="text" id="input1">
+            <button id="btn1">(k) отправить</button></p>
+            <hr>
+            <p><input type="text" id="input2">
+                <button id="btn2">(v) отправить</button></p>
+                <hr>
+                <p><input type="text" id="input3">
+                    <button id="btn3">(ka) отправить</button></p>
+                    <hr>
+            <p><input type="text" id="input4">
+                      <button id="btn4">(ka) отправить</button></p>
+                      <hr>    
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JAVASCRIPT</li>
+                <li>BOOTSTRAP</li>
+                <li>REACT</li>
+            </ul>
+        </section>
+    </section>
+   </div>
+<script src="main.js"></script>
 </body>
 </html>
