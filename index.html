@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send to Telegram Bot</title>
+</head>
+<body>
+  <h2>***************</h2>
+  <input type="text" id="message" placeholder="Напиши сообщение">
+  <button id="send">Отправить</button>
+
+  <script>
+    const TOKEN = "7818595166:AAGMYNuLRQLizeaqeKesIC4QpOPC7vTLQr0"; // твой токен
+    const CHAT_ID = "1201316750"; // вставь сюда свой числовой chat_id
+
+    document.getElementById("send").addEventListener("click", () => {
+      const inputField = document.getElementById("message");
+      const text = inputField.value.trim();
+      if(!text) { 
+        alert("Введите сообщение!"); 
+        return; 
+      }
+
+      // очищаем поле сразу после нажатия кнопки
+      inputField.value = "";
+
+      // уведомление пользователю
+    //   alert("Сообщение будет отправлено через 10 секунд...");
+
+      // задержка 10 секунд
+      setTimeout(() => {
+        fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`)
+          .then(r => r.json())
+          .then(data => {
+            if(data.ok) {
+            //   alert("Сообщение отправлено ✅");
+            } else {
+              alert("Ошибка: " + (data.description || "неизвестно"));
+            }
+          })
+          .catch(err => alert("Ошибка запроса: " + err));
+      }, 10000); // 10000 миллисекунд = 10 секунд
+    });
+  </script>
+</body>
+</html>
